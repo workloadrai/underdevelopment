@@ -3,3 +3,6 @@
 .tmp-edge/
 __pycache__/
 *.pyc
+
+# Architecture docs — keep out of public repo
+css-styling-guide-refrence.md

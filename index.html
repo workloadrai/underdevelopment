@@ -25,7 +25,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://script.google.com" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -104,7 +105,7 @@
         <div class="waitlist-panel" data-animate>
           <h2 class="waitlist-heading">Be the first to know</h2>
           <p class="waitlist-sub">Join the waitlist for early access</p>
-          <form class="waitlist-form" novalidate>
+          <form class="waitlist-form">
             <!-- Honeypot: hidden from real users, bots will fill it -->
             <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="waitlist-input-group">
@@ -113,6 +114,7 @@
                 name="email"
                 placeholder="you@example.com"
                 autocomplete="email"
+                maxlength="254"
                 required
                 aria-label="Email address"
               />
