@@ -227,6 +227,10 @@
       e.preventDefault();
       if (submitting) return;
 
+      // Honeypot check — bots fill hidden fields, humans don't
+      var honeypot = form.querySelector('input[name="website"]');
+      if (honeypot && honeypot.value) return;
+
       var input = form.querySelector(
         'input[type="email"], input[name="email"]'
       );

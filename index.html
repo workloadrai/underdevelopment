@@ -25,6 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://script.google.com" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -104,6 +105,8 @@
           <h2 class="waitlist-heading">Be the first to know</h2>
           <p class="waitlist-sub">Join the waitlist for early access</p>
           <form class="waitlist-form" novalidate>
+            <!-- Honeypot: hidden from real users, bots will fill it -->
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="waitlist-input-group">
               <input
                 type="email"
