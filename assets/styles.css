@@ -531,6 +531,58 @@ body.is-ready .tagline {
 }
 
 /* =========================================================
+   Social Proof Counter
+   ========================================================= */
+
+.social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+body.is-ready .social-proof {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.avatar-stack {
+  display: flex;
+}
+
+.avatar-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--background);
+  margin-left: -8px;
+}
+
+.avatar-dot:first-child {
+  margin-left: 0;
+}
+
+.avatar-dot:nth-child(1) { background: linear-gradient(135deg, #7c5cff, #9b82ff); }
+.avatar-dot:nth-child(2) { background: linear-gradient(135deg, #22c55e, #4ade80); }
+.avatar-dot:nth-child(3) { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.avatar-dot:nth-child(4) { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+.avatar-dot:nth-child(5) { background: linear-gradient(135deg, #ef4444, #f87171); }
+
+.social-proof-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.social-proof-text strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* =========================================================
    Footer
    ========================================================= */
 
