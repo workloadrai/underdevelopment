@@ -550,27 +550,26 @@ body.is-ready .social-proof {
   transform: translateY(0);
 }
 
-.avatar-stack {
-  display: flex;
-}
-
-.avatar-dot {
-  width: 26px;
-  height: 26px;
+.live-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 2px solid var(--background);
-  margin-left: -8px;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  flex-shrink: 0;
+  animation: pulse-live 2s ease-in-out infinite;
 }
 
-.avatar-dot:first-child {
-  margin-left: 0;
+@keyframes pulse-live {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.25);
+  }
 }
-
-.avatar-dot:nth-child(1) { background: linear-gradient(135deg, #7c5cff, #9b82ff); }
-.avatar-dot:nth-child(2) { background: linear-gradient(135deg, #22c55e, #4ade80); }
-.avatar-dot:nth-child(3) { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
-.avatar-dot:nth-child(4) { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
-.avatar-dot:nth-child(5) { background: linear-gradient(135deg, #ef4444, #f87171); }
 
 .social-proof-text {
   font-size: 0.85rem;
