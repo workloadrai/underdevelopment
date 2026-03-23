@@ -213,13 +213,19 @@
    * ========================================================= */
 
   function initWaitlistForm() {
+    var SHEET_URL =
+      "https://script.google.com/macros/s/AKfycbwHkL7zGay2X2tAtIMOSKWFgvCMA0MCSO_3RDBmFnsKt5-0XNzV-nHlIdL7ultSC3Ir7A/exec";
+
     var form = document.querySelector("form.waitlist-form");
     if (!form) return;
 
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitting = false;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (submitting) return;
 
       var input = form.querySelector(
         'input[type="email"], input[name="email"]'
@@ -238,24 +244,49 @@
         return;
       }
 
-      form.classList.add("is-success");
+      // Disable button and show loading state
+      submitting = true;
+      var originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "Sending\u2026";
 
-      var msg = document.createElement("div");
-      msg.className = "waitlist-success";
-      msg.setAttribute("role", "status");
-      msg.innerHTML =
-        '<svg class="waitlist-check" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
-        '<circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"/>' +
-        '<path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" ' +
-        'stroke-linecap="round" stroke-linejoin="round"/>' +
-        "</svg>" +
-        "<span>You're on the list!</span>";
+      fetch(SHEET_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(function () {
+          // Show success (no-cors returns opaque response, so we trust it went through)
+          form.classList.add("is-success");
 
-      form.parentNode.insertBefore(msg, form.nextSibling);
+          var msg = document.createElement("div");
+          msg.className = "waitlist-success";
+          msg.setAttribute("role", "status");
+          msg.innerHTML =
+            '<svg class="waitlist-check" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
+            '<circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"/>' +
+            '<path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" ' +
+            'stroke-linecap="round" stroke-linejoin="round"/>' +
+            "</svg>" +
+            "<span>You're on the list!</span>";
 
-      requestAnimationFrame(function () {
-        msg.classList.add("is-visible");
-      });
+          form.parentNode.insertBefore(msg, form.nextSibling);
+
+          requestAnimationFrame(function () {
+            msg.classList.add("is-visible");
+          });
+        })
+        .catch(function () {
+          // Reset button on failure
+          submitting = false;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          input.classList.add("is-error");
+          setTimeout(function () {
+            input.classList.remove("is-error");
+          }, 600);
+        });
     });
   }
 
