@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>workloadr.ai</title>
-    <meta name="description" content="Currently Under Development" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="AI-powered task management that defeats procrastination. Join the waitlist." />
+    <meta name="theme-color" content="#0b0f17" />
     <link rel="canonical" href="https://workloadr.ai/" />
     <meta property="og:title" content="workloadr.ai" />
     <meta property="og:description" content="Currently Under Development" />
@@ -28,21 +28,112 @@
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
+    <!-- Particle canvas background -->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
     <main class="shell">
+      <!-- Hero Section -->
       <section class="hero" aria-labelledby="hero-title">
-        <span class="pill" role="status">Currently Under Development</span>
-        <h1 id="hero-title" class="hero-title">workloadr.ai</h1>
-        <p class="tagline">Your Procrastination's Worst Enemy.</p>
+        <div class="hero-logo" data-animate aria-hidden="true">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#dbe0f9" />
+                <stop offset="40%" stop-color="#9caaef" />
+                <stop offset="70%" stop-color="#7495ec" />
+                <stop offset="100%" stop-color="#70cad4" />
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(124,92,255,0.3)" stroke-width="1"/>
+            <path
+              d="M18 22l7 20h4l5-12 5 12h4l7-20h-4.3l-4.9 13.3L36 22h-3.6l-5.2 13.3L22.3 22H18z"
+              fill="url(#logo-grad)"
+            />
+          </svg>
+        </div>
+
+        <span class="pill" data-animate role="status">Currently Under Development</span>
+
+        <h1 id="hero-title" class="hero-title" data-animate>workloadr.ai</h1>
+
+        <p class="tagline" data-animate>Your Procrastination's Worst Enemy.</p>
+      </section>
+
+      <!-- Feature Teasers -->
+      <section class="features" aria-label="Upcoming features">
+        <div class="features-grid">
+          <article class="feature-card" data-animate>
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22"/>
+                <path d="M12 2a4 4 0 0 0-4 4c0 1.95 1.4 3.58 3.25 3.93"/>
+                <path d="M8.56 13.68C5.94 14.93 4 16.78 4 19h16c0-2.22-1.94-4.07-4.56-5.32"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">AI-Powered Planning</h3>
+            <p class="feature-desc">Smart task prioritization that adapts to your workflow and learns your patterns.</p>
+          </article>
+
+          <article class="feature-card" data-animate>
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Deadline Intelligence</h3>
+            <p class="feature-desc">Never miss a due date with predictive scheduling and smart reminders.</p>
+          </article>
+
+          <article class="feature-card" data-animate>
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 3v18h18"/>
+                <path d="M7 16l4-8 4 5 5-9"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Focus Analytics</h3>
+            <p class="feature-desc">Understand your productivity patterns and optimize your best work hours.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Email Waitlist -->
+      <section class="waitlist" aria-label="Join the waitlist">
+        <div class="waitlist-panel" data-animate>
+          <h2 class="waitlist-heading">Be the first to know</h2>
+          <p class="waitlist-sub">Join the waitlist for early access</p>
+          <form class="waitlist-form" novalidate>
+            <div class="waitlist-input-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+                aria-label="Email address"
+              />
+              <button type="submit" class="btn-primary">
+                Join Waitlist
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"/>
+                  <path d="m12 5 7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+            <p class="waitlist-privacy">No spam, ever. We'll only notify you when we launch.</p>
+          </form>
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" data-animate>
       <div class="footer-inner">
         <div class="footer-left">
           Dedicated to A.A
         </div>
         <div class="footer-center" aria-label="Copyright 2026 workloadr.ai">
-          Copyright © 2026 workloadr.ai - All Rights Reserved.
+          Copyright &copy; 2026 workloadr.ai - All Rights Reserved.
         </div>
         <div class="footer-right" aria-label="Social links">
           <a
